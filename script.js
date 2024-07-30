@@ -73,9 +73,15 @@ function refreshCart(){
     productList.innerHTML=``;
     let count = 0;
     let totalPrice = 0;
-    checkoutList.forEach((item,key) =>{
+    if(checkoutList.length == 0){
+        count = 0;
+        totalPrice = 0;
+    }
+    else{
+        checkoutList.forEach((item,key) =>{
         count += item.quantity;
-        totalPrice=parseInt(item.Price * item.quantity);
+        totalPrice += parseInt(item.Price * item.quantity);
+        console.log(checkoutList,count);
         let li = document.createElement("li");
         li.innerHTML=
         `<img src="images/${item.image}">
@@ -89,15 +95,16 @@ function refreshCart(){
         productList.appendChild(li);
         
         quantity.innerHTML = count;
-        // total.innerHTML = `<small>Subtotal(${count} items)</small>`+totalPrice;
+        total.innerHTML = `<small>Subtotal(${count} items)</small>`+totalPrice;
     });
+    }
 }
-
 function changeQuantity(key, quantity){
     if(quantity  == 0){
         delete checkoutList[key];
     }else{
         checkoutList[key].quantity=quantity;
     }
+    console.log(checkoutList.length);
     refreshCart();
 }

@@ -119,7 +119,7 @@ nav .shoppingBasket span{
 
 }
 
-.card .checkout div{
+.card .checkout .total{
     width: 100%;
     height: 60px;
     display: flex;
@@ -131,8 +131,12 @@ nav .shoppingBasket span{
 }
 
 .card .checkout .close{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: black;
     color: white;
+    cursor: pointer;
 }
  
 .active .card{
